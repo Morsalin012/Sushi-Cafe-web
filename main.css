@@ -1,46 +1,66 @@
-.login-container, .signup-container {
-    width: 300px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #f9f9f9;
+:root {
+  --bg1: #0f172a;       /* deep navy */
+  --bg2: #3e2723;       /* rich mocha */
+  --card: #ffffff0d;    /* translucent glass */
+  --card-border: #ffffff33;
+  --ink: #e6e6e9;
+  --muted: #b8b8bf;
+  --gold: #c5a54a;
+  --gold-2: #8c6f2a;
+  --danger: #e05d5d;
+  --radius: 20px;
+  --shadow: 0 10px 40px rgba(0,0,0,.35);
 }
-.login-container h2, .signup-container h2 {
-    text-align: center;
+
+* { box-sizing: border-box }
+html, body { height: 100% }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 800px at 10% 10%, #1a223580 0%, transparent 60%),
+    radial-gradient(1000px 700px at 90% 90%, #3e272380 0%, transparent 60%),
+    linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
 }
-label {
-    display: block;
-    margin-top: 10px;
+
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  position: relative;
+  overflow: hidden;
 }
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
+
+/* floating glow orbs */
+.auth-bg::before,
+.auth-bg::after {
+  content: "";
+  position: absolute;
+  width: 520px; 
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .35;
+  animation: float 18s ease-in-out infinite;
 }
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    background: #2d8f7b;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.auth-bg::before {
+  left: -160px; 
+  top: -120px;
+  background: radial-gradient(circle at 30% 30%, var(--gold) 0%, transparent 60%);
 }
-button:hover {
-    background: #226b5c;
+.auth-bg::after {
+  right: -160px; 
+  bottom: -120px;
+  background: radial-gradient(circle at 70% 70%, #6a462f 0%, transparent 60%);
+  animation-delay: -6s;
 }
-#forgotPassword {
-    display: block;
-    text-align: right;
-    margin-top: 10px;
-    color: #2d8f7b;
-    text-decoration: none;
-    font-size: 0.95em;
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0,0,0) }
+  50% { transform: translate3d(0,-24px,0) }
 }
-#forgotPassword:hover {
-    text-decoration: underline;
-}
+
