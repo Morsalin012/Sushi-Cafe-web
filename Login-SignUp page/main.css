@@ -1,0 +1,123 @@
+:root {
+  --bg1: #0f172a;       /* deep navy */
+  --bg2: #3e2723;       /* rich mocha */
+  --card: #ffffff0d;    /* translucent glass */
+  --card-border: #ffffff33;
+  --ink: #e6e6e9;
+  --muted: #b8b8bf;
+  --gold: #c5a54a;
+  --gold-2: #8c6f2a;
+  --danger: #e05d5d;
+  --radius: 20px;
+  --shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box }
+html, body { height: 100% }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 800px at 10% 10%, #1a223580 0%, transparent 60%),
+    radial-gradient(1000px 700px at 90% 90%, #3e272380 0%, transparent 60%),
+    linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+}
+
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* floating glow orbs */
+.auth-bg::before,
+.auth-bg::after {
+  content: "";
+  position: absolute;
+  width: 520px; 
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .35;
+  animation: float 18s ease-in-out infinite;
+}
+.auth-bg::before {
+  left: -160px; 
+  top: -120px;
+  background: radial-gradient(circle at 30% 30%, var(--gold) 0%, transparent 60%);
+}
+.auth-bg::after {
+  right: -160px; 
+  bottom: -120px;
+  background: radial-gradient(circle at 70% 70%, #6a462f 0%, transparent 60%);
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0,0,0) }
+  50% { transform: translate3d(0,-24px,0) }
+}
+/* glass card */
+.glass-card {
+  width: min(92vw, 460px);
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  padding: 28px 24px;
+}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  .glass-card { background: #101826cc }
+}
+
+/* entrance motion (optional) */
+@media (prefers-reduced-motion: no-preference) {
+  .glass-card {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: enter .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes enter { to { opacity: 1; transform: translateY(0) } }
+}
+
+.brand {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.mark {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: conic-gradient(from 0deg, var(--gold), var(--gold-2), var(--bg2));
+  box-shadow: 0 2px 10px rgba(197,165,74,.4);
+}
+.brand h1 { margin: 0; font-weight: 700; letter-spacing: .4px }
+.tagline { margin: .25rem 0 0; color: var(--muted); font-size: .9rem }
+
+.page-title { margin: 8px 0 6px; font-size: 1.6rem }
+
+.form { margin-top: 6px }
+.field { margin: 14px 0 }
+label { display: block; margin-bottom: 6px; font-size: .95rem }
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ffffff29;
+  background: #0f1525a6;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+

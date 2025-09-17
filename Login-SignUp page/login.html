@@ -1,0 +1,54 @@
+<!---Login page !-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Sushi & Mocha — Login</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main class="auth-bg">
+    <section class="glass-card">
+      <header class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <h1>Sushi & Mocha</h1>
+        <p class="tagline">Taste and Tranquility</p>
+      </header>
+
+      <h2 class="page-title">Welcome Back</h2>
+
+      <form id="loginForm" class="form" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" autocomplete="email" required>
+          <p class="hint" hidden>Please enter a valid email.</p>
+        </div>
+
+        <div class="field">
+          <label for="login-password">Password</label>
+          <div class="password">
+            <input id="login-password" name="password" type="password" autocomplete="current-password" minlength="6" required>
+            <button type="button" class="icon-btn" aria-label="Show password" data-toggle="visibility">👁</button>
+          </div>
+          <p class="hint" hidden>Enter your password here.</p>
+        </div>
+
+        <div class="actions">
+          <a href="#" id="forgotPassword" class="link">Forgot password?</a>
+          <button type="submit" class="cta">Sign in</button>
+        </div>
+
+        <div class="status" aria-live="polite" aria-atomic="true"></div>
+      </form>
+
+      <p class="swap">
+        Don't have an account?
+        <a href="sign-up.html" rel="next" class="link-strong">Create one</a>
+      </p>
+    </section>
+  </main>
+  <script src="main.js" defer></script>
+</body>
+</html>
