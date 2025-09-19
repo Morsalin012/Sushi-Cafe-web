@@ -64,6 +64,22 @@
   </main>
    <script src="main.js" defer></script>
    <script>
+    // Show/hide password functionality for sign-up page
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButtons = document.querySelectorAll('.icon-btn[data-toggle="visibility"]');
+      toggleButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const input = btn.parentElement.querySelector('input');
+          if (input.type === 'password') {
+            input.type = 'text';
+            btn.textContent = '🙈';
+          } else {
+            input.type = 'password';
+            btn.textContent = '👁';
+          }
+        });
+      });
+    });
     // Add authentication check on page load
     document.addEventListener('DOMContentLoaded', function() {
       // Check if user is already logged in
@@ -109,14 +125,12 @@
             const newUser = { name, email, password };
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
-            
-            // Show success message and redirect to login
-            statusDiv.textContent = 'Account created successfully! Redirecting to login...';
+            // Show success message and redirect to login page
+            statusDiv.textContent = 'Account created successfully! Please log in.';
             statusDiv.style.color = '#4caf50';
-            
             setTimeout(() => {
               window.location.href = 'login.html';
-            }, 2000);
+            }, 1500);
           }
         });
       }
