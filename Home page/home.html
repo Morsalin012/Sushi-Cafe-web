@@ -6,6 +6,12 @@
   <title>Sakura Mocha Rolls — Premium Sushi & Coffee Experience</title>
   <link rel="stylesheet" href="home.css">
 </head>
+<script>
+  // Check if user is logged in
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+     window.location.href = '../Login-SignUp page/login.html';
+  }
+</script>
 <body>
   <!-- Header -->
   <header>
@@ -15,6 +21,7 @@
       <a href="#menu">Menu</a>
       <a href="#about">About</a>
       <a href="#contact" class="btn">Reserve</a>
+      <a href="#" id="logoutBtn" class="btn">Logout</a>
     </nav>
   </header>
 
@@ -85,5 +92,14 @@
   <footer>
     <p>© 2025 Sakura Mocha Rolls — Premium Sushi & Coffee Experience</p>
   </footer>
+  <script>
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+    window.location.href = '../Login-SignUp page/login.html';
+    });
+  </script>
 </body>
 </html>
