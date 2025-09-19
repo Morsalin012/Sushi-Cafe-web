@@ -40,6 +40,14 @@
           </div>
           <p class="hint" hidden>Use at least 8 characters.</p>
         </div>
+        <div class="field">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <div class="password">
+            <input id="signup-confirm-password" name="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+            <button type="button" class="icon-btn" aria-label="Show password" data-toggle="visibility">👁</button>
+          </div>
+          <p class="hint" id="password-mismatch-hint" style="color:#e05d5d;display:none;">Please correct your password.</p>
+        </div>
 
         <div class="actions">
           <button type="submit" class="cta">Create account</button>
@@ -73,7 +81,14 @@
           const name = document.getElementById('name').value;
           const email = document.getElementById('signup-email').value;
           const password = document.getElementById('signup-password').value;
-          
+          const confirmPassword = document.getElementById('signup-confirm-password').value;
+          const mismatchHint = document.getElementById('password-mismatch-hint');
+          if (password !== confirmPassword) {
+            mismatchHint.style.display = 'block';
+            return;
+          } else {
+            mismatchHint.style.display = 'none';
+          }
           if (name && email && password.length >= 8) {
             // Simulate successful signup
             localStorage.setItem('isLoggedIn', 'true');
