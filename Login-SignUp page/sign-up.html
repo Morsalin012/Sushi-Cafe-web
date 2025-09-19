@@ -60,7 +60,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Check if user is already logged in
       if (localStorage.getItem('isLoggedIn') === 'true') {
-        window.location.href = 'home.html';
+        window.location.href = '../Home page/home.html';
       }
       
       // Handle form submission
@@ -79,9 +79,8 @@
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('userEmail', email);
             localStorage.setItem('userName', name);
-            
             // Redirect to home page
-            window.location.href = 'home.html';
+            window.location.href = '../Home page/home.html';
           }
         });
       }
