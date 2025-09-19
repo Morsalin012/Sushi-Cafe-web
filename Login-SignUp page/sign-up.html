@@ -63,7 +63,7 @@
     </section>
   </main>
    <script src="main.js" defer></script>
-  <script>
+   <script>
     // Add authentication check on page load
     document.addEventListener('DOMContentLoaded', function() {
       // Check if user is already logged in
@@ -73,6 +73,8 @@
       
       // Handle form submission
       const signupForm = document.getElementById('signupForm');
+      const statusDiv = document.querySelector('.status');
+      
       if (signupForm) {
         signupForm.addEventListener('submit', function(e) {
           e.preventDefault();
@@ -83,22 +85,56 @@
           const password = document.getElementById('signup-password').value;
           const confirmPassword = document.getElementById('signup-confirm-password').value;
           const mismatchHint = document.getElementById('password-mismatch-hint');
+          
+          // Check if passwords match
           if (password !== confirmPassword) {
             mismatchHint.style.display = 'block';
             return false;
           } else {
             mismatchHint.style.display = 'none';
           }
+          
+          // Check if user already exists
+          const users = JSON.parse(localStorage.getItem('users') || '[]');
+          const userExists = users.some(user => user.email === email);
+          
+          if (userExists) {
+            statusDiv.textContent = 'An account with this email already exists.';
+            statusDiv.style.color = '#e05d5d';
+            return false;
+          }
+          
           if (name && email && password.length >= 8) {
-            // Simulate successful signup
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userName', name);
-            // Redirect to home page
-            window.location.href = '../Home page/home.html';
+            // Store user data
+            const newUser = { name, email, password };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Show success message and redirect to login
+            statusDiv.textContent = 'Account created successfully! Redirecting to login...';
+            statusDiv.style.color = '#4caf50';
+            
+            setTimeout(() => {
+              window.location.href = 'login.html';
+            }, 2000);
           }
         });
       }
+    });
+  </script>
+   <script>
+    // Password visibility toggle
+    document.querySelectorAll('.icon-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const input = this.previousElementSibling;
+        if (input.type === 'password') {
+          input.type = 'text';
+          this.setAttribute('aria-label', 'Hide password');
+        } else {
+          input.type = 'password';
+          this.setAttribute('aria-label', 'Show password');
+        }
+      });
     });
   </script>
 </body>
