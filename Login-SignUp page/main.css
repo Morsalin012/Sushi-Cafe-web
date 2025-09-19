@@ -47,11 +47,13 @@ body {
   opacity: .35;
   animation: float 18s ease-in-out infinite;
 }
+
 .auth-bg::before {
   left: -160px; 
   top: -120px;
   background: radial-gradient(circle at 30% 30%, var(--gold) 0%, transparent 60%);
 }
+
 .auth-bg::after {
   right: -160px; 
   bottom: -120px;
@@ -102,14 +104,33 @@ body {
   background: conic-gradient(from 0deg, var(--gold), var(--gold-2), var(--bg2));
   box-shadow: 0 2px 10px rgba(197,165,74,.4);
 }
-.brand h1 { margin: 0; font-weight: 700; letter-spacing: .4px }
-.tagline { margin: .25rem 0 0; color: var(--muted); font-size: .9rem }
 
-.page-title { margin: 8px 0 6px; font-size: 1.6rem }
+.brand h1 { 
+  margin: 0; 
+  font-weight: 700; 
+  letter-spacing: .4px;
+ }
+
+.tagline { 
+  margin: .25rem 0 0; 
+  color: var(--muted); 
+  font-size: .9rem;
+ }
+
+.page-title { 
+  margin: 8px 0 6px; 
+  font-size: 1.6rem;
+ }
 
 .form { margin-top: 6px }
 .field { margin: 14px 0 }
-label { display: block; margin-bottom: 6px; font-size: .95rem }
+
+label { 
+  display: block; 
+  margin-bottom: 6px; 
+  font-size: .95rem; 
+}
+
 input {
   width: 100%;
   padding: 12px 14px;
@@ -120,10 +141,20 @@ input {
   outline: none;
   transition: border-color .2s, box-shadow .2s, background .2s;
 }
-input::placeholder { color: #c9c9cf99 }
-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,165,74,.25) }
 
-.password { position: relative }
+input::placeholder { 
+  color: #c9c9cf99; 
+}
+
+input:focus { 
+  border-color: var(--gold); 
+  box-shadow: 0 0 0 3px rgba(197,165,74,.25); 
+}
+
+.password { 
+  position: relative;
+ }
+
 .icon-btn {
   position: absolute;
   top: 50%; right: 8px;
@@ -136,11 +167,24 @@ input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,165,74,.
   cursor: pointer;
   transition: background .2s, transform .2s;
 }
-.icon-btn:hover { background: #ffffff1f }
-.icon-btn:active { transform: translateY(-50%) scale(.98) }
 
-.hint { margin: 6px 2px 0; font-size: .85rem; color: #bfbfc5 }
-.hint.error { color: var(--danger) }
+.icon-btn:hover { 
+  background: #ffffff1f;
+}
+
+.icon-btn:active { 
+  transform: translateY(-50%) scale(.98); 
+}
+
+.hint { 
+  margin: 6px 2px 0; 
+  font-size: .85rem; 
+  color: #bfbfc5; 
+}
+
+.hint.error { 
+  color: var(--danger); 
+}
 
 .actions {
   display: flex;
@@ -148,11 +192,28 @@ input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,165,74,.
   justify-content: space-between;
   gap: 12px;
   margin-top: 14px;
+  flex-wrap: wrap;
 }
-.link { color: var(--ink); opacity: .85; text-decoration: none }
-.link:hover { text-decoration: underline }
-.link-strong { color: var(--gold); text-underline-offset: 2px }
-.link-strong:hover { color: var(--ink) }
+
+.link { 
+  color: var(--ink); 
+  opacity: .85; 
+  text-decoration: none; 
+}
+
+.link:hover { 
+  text-decoration: underline; 
+  opacity: 1; 
+}
+
+.link-strong { 
+  color: var(--gold); 
+  text-underline-offset: 2px; 
+}
+
+.link-strong:hover { 
+  color: var(--ink); 
+}
 
 .cta {
   border: none;
@@ -164,13 +225,32 @@ input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,165,74,.
   box-shadow: 0 6px 22px rgba(197,165,74,.2);
   transition: transform .18s, box-shadow .18s, filter .18s;
 }
-.cta:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(197,165,74,.28) }
-.cta:active { transform: translateY(0); filter: saturate(1.05) }
 
-.status { min-height: 22px; margin-top: 10px; font-size: .92rem }
-.swap { margin-top: 16px; text-align: center; color: #c8c8cf }
+.cta:hover { 
+  transform: translateY(-1px); 
+  box-shadow: 0 10px 28px rgba(197,165,74,.28); 
+}
+
+.cta:active { 
+  transform: translateY(0); 
+  filter: saturate(1.05); 
+}
+
+.status { 
+  min-height: 22px; 
+  margin-top: 10px; 
+  font-size: .92rem; 
+}
+.swap { 
+  margin-top: 16px; 
+  text-align: center; 
+  color: #c8c8cf; 
+}
 
 /* Accessibility: reduce non-essential motion */
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; scroll-behavior: auto !important }
+  * { animation: none !important; 
+    transition: none !important; 
+    scroll-behavior: auto !important; 
+  }
 }
