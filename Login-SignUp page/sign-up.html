@@ -85,7 +85,7 @@
           const mismatchHint = document.getElementById('password-mismatch-hint');
           if (password !== confirmPassword) {
             mismatchHint.style.display = 'block';
-            return;
+            return false;
           } else {
             mismatchHint.style.display = 'none';
           }
