@@ -13,6 +13,17 @@
 
     <form id="SushiFrom">
 
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+
+        <select id="gender"required>
+            <option value=""></option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+
+
         <label for="sushi">Choose Sushi:</label>
         
         <select id="sushi"required>
@@ -25,14 +36,25 @@
 
 
 
-
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" required>
-        <select id="gender"required>
+        <div id="Edomae"style="display:none;">
+        <label for="celebration">Reason for Celebration:</label>
+        
+        <select id="celebration">
             <option value=""></option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="birthday">Birthday</option>
+            <option value="education">Education Success</option>
+            <option value="career">career Achievement</option>
+            <option value="mothersday">Mother's Day</option>
+            <option value="breakup">Breakup</option>
+            <option value="other">Other</option>
         </select>
+
+
+        <label for="note">Write a Note</label>
+        <textarea id="note"rows="5"placeholder="Tell us abot your celebration.............."></textarea>
+
+        
+        </div>
 
 
 
