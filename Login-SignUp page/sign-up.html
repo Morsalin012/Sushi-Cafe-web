@@ -54,6 +54,38 @@
       </p>
     </section>
   </main>
-  <script src="main.js" defer></script>
+   <script src="main.js" defer></script>
+  <script>
+    // Add authentication check on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user is already logged in
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        window.location.href = 'home.html';
+      }
+      
+      // Handle form submission
+      const signupForm = document.getElementById('signupForm');
+      if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Basic validation
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('signup-email').value;
+          const password = document.getElementById('signup-password').value;
+          
+          if (name && email && password.length >= 8) {
+            // Simulate successful signup
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', name);
+            
+            // Redirect to home page
+            window.location.href = 'home.html';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
