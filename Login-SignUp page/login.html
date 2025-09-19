@@ -50,5 +50,35 @@
     </section>
   </main>
   <script src="main.js" defer></script>
+  <script>
+    // Add authentication check on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user is already logged in
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+  window.location.href = '../Home page/home.html';
+      }
+      
+      // Handle form submission
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Basic validation
+          const email = document.getElementById('login-email').value;
+          const password = document.getElementById('login-password').value;
+          
+          if (email && password.length >= 8) {
+            // Simulate successful login
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            
+            // Redirect to home page
+            window.location.href = '../Home page/home.html';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
