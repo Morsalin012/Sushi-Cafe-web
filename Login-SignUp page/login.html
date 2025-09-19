@@ -50,16 +50,18 @@
     </section>
   </main>
   <script src="main.js" defer></script>
-  <script>
+   <script>
     // Add authentication check on page load
     document.addEventListener('DOMContentLoaded', function() {
       // Check if user is already logged in
       if (localStorage.getItem('isLoggedIn') === 'true') {
-  window.location.href = '../Home page/home.html';
+        window.location.href = '../Home page/home.html';
       }
       
       // Handle form submission
       const loginForm = document.getElementById('loginForm');
+      const statusDiv = document.querySelector('.status');
+      
       if (loginForm) {
         loginForm.addEventListener('submit', function(e) {
           e.preventDefault();
@@ -68,13 +70,19 @@
           const email = document.getElementById('login-email').value;
           const password = document.getElementById('login-password').value;
           
-          if (email && password.length >= 8) {
-            // Simulate successful login
+          // Check if user exists in localStorage
+          const users = JSON.parse(localStorage.getItem('users') || '[]');
+          const user = users.find(u => u.email === email && u.password === password);
+          
+          if (user) {
+            // Successful login
             localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('userEmail', email);
-            
-            // Redirect to home page
+            localStorage.setItem('currentUser', JSON.stringify(user));
             window.location.href = '../Home page/home.html';
+          } else {
+            // Failed login
+            statusDiv.textContent = 'Invalid email or password. Please try again.';
+            statusDiv.style.color = '#e05d5d';
           }
         });
       }
