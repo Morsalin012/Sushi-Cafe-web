@@ -45,11 +45,9 @@ function setupForm(formSelector) {
 
     if (status) {
       status.textContent = ok
-        ? '✅ Success — submitting...'
+        ? '✅ Validating credentials...'
         : '⚠️ Please fix the highlighted fields.';
     }
-
-    // TODO: integrate real API call here
   });
 
   // Handle live input validation
@@ -70,5 +68,11 @@ function setupForm(formSelector) {
 // ===============================
 // Init both forms
 // ===============================
-setupForm('#loginForm');
-setupForm('#signupForm');
+// Only initialize forms if they exist on the page
+if ($('#loginForm')) setupForm('#loginForm');
+if ($('#signupForm')) setupForm('#signupForm');
+
+// Initialize users array in localStorage if it doesn't exist
+if (!localStorage.getItem('users')) {
+  localStorage.setItem('users', JSON.stringify([]));
+}
