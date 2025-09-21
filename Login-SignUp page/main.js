@@ -71,7 +71,7 @@ function setupForm(formSelector) {
     document.addEventListener('DOMContentLoaded', function() {
       // Check if user is already logged in
       if (localStorage.getItem('isLoggedIn') === 'true') {
-        window.location.href = '../Home page/home.html';
+        window.location.href = '../Home page/index.html';
       }
       
       // Handle form submission
@@ -94,7 +94,7 @@ function setupForm(formSelector) {
             // Successful login
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('currentUser', JSON.stringify(user));
-            window.location.href = '../Home page/home.html';
+            window.location.href = '../Home page/index.html';
           } else {
             // Failed login
             statusDiv.textContent = 'Invalid email or password. Please try again.';
@@ -135,7 +135,7 @@ if (!localStorage.getItem('users')) {
     document.addEventListener('DOMContentLoaded', function() {
       // Check if user is already logged in
       if (localStorage.getItem('isLoggedIn') === 'true') {
-        window.location.href = '../Home page/home.html';
+        window.location.href = '../Home page/index.html';
       }
       
       // Handle form submission
