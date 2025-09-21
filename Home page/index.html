@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Mocha Rolls — Premium Sushi & Coffee Experience</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<script>
+  // Check if user is logged in
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+     window.location.href = '../Login-SignUp page/login.html';
+  }
+</script>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">🍣Sakura Mocha Rolls- Premium Sushi & Coffee Experience☕</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn">Reserve</a>
+      <a href="#" id="logoutBtn" class="btn">Logout</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>Premium Sushi & Coffee Experience</h1>
+      <p>Authentic Japanese sushi meets artisan coffee — only at Sakura Mocha Rolls.</p>
+      <a href="#menu" class="btn">Explore Menu</a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <!-- Sushi -->
+      <div class="menu-item">
+        <img src="https://uncutrecipes.com/Images-Recipes-Japanese/Dragon-Roll.webp" alt="Dragon Roll">
+        <h3>Dragon Roll</h3>
+        <p>Eel, avocado, cucumber, and a touch of sweet sauce.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Sushi Platter">
+        <h3>Sushi Platter</h3>
+        <p>Assorted nigiri, sashimi, and rolls — ideal for sharing.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c" alt="Tuna Nigiri">
+        <h3>Tuna Nigiri</h3>
+        <p>Premium tuna slices on seasoned rice.</p>
+      </div>
+
+      <!-- Coffee -->
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Cappuccino">
+        <h3>Cappuccino</h3>
+        <p>Rich espresso topped with silky milk foam.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Mocha Latte">
+        <h3>Mocha Latte</h3>
+        <p>A chocolatey delight with espresso and steamed milk.</p>
+      </div>
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1523942839745-7848c839b661" alt="Matcha Latte">
+        <h3>Matcha Latte</h3>
+        <p>Earthy Japanese green tea blended with milk.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Sakura Mocha Rolls combines two passions — handcrafted sushi and specialty coffee. From traditional rolls to artisan brews, we bring harmony to every plate and cup.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact & Reservations</h2>
+    <p>📍 123 Sushi & Coffee Street, Dhaka<br>📞 +880 123 456 789</p>
+    <a href="tel:+880123456789" class="btn">Call Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Sakura Mocha Rolls — Premium Sushi & Coffee Experience</p>
+  </footer>
+  <script>
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+    window.location.href = '../Login-SignUp page/login.html';
+    });
+  </script>
+</body>
+</html>
