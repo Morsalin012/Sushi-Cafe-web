@@ -22,14 +22,6 @@ A **frontend web project** built with **HTML, CSS, and JavaScript**, showcasing 
 ---
  
 
----
-
-## 📂 Project Structure  
-
-
-
----
-
 ## 🎯 Future Improvements  
 - 🛒 Add online ordering system (cart + checkout)  
 - 🌐 Add localization (multi-language support)  
