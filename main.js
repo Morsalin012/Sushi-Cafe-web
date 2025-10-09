@@ -15,7 +15,7 @@ if (!localStorage.getItem('users')) {
 document.addEventListener('DOMContentLoaded', function() {
   // Check if user is already logged in and redirect
   if (localStorage.getItem('isLoggedIn') === 'true') {
-    window.location.href = 'home.html';
+    window.location.href = '../Home page/home.html';
   }
 
   // ===============================
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Successful login
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('currentUser', JSON.stringify(user));
-        window.location.href = 'home.html';
+        window.location.href = '../Home page/home.html';
       } else {
         // Failed login
         statusDiv.textContent = 'Invalid email or password. Please try again.';
