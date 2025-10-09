@@ -13,9 +13,12 @@ if (!localStorage.getItem('users')) {
 // Single DOMContentLoaded event listener
 // ===============================
 document.addEventListener('DOMContentLoaded', function() {
-  // Check if user is already logged in and redirect
-  if (localStorage.getItem('isLoggedIn') === 'true') {
-    window.location.href = '../Home page/home.html';
+  // Check if user is already logged in and redirect from login/signup pages
+  if (window.location.pathname.includes('login.html') || 
+      window.location.pathname.includes('sign-up.html')) {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      window.location.href = 'home.html';
+    }
   }
 
   // ===============================
@@ -64,7 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Successful login
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('currentUser', JSON.stringify(user));
-        window.location.href = '../Home page/home.html';
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userName', user.name);
+        
+        statusDiv.textContent = 'Login successful! Redirecting...';
+        statusDiv.style.color = '#4caf50';
+        
+        setTimeout(() => {
+          window.location.href = 'home.html';
+        }, 1000);
       } else {
         // Failed login
         statusDiv.textContent = 'Invalid email or password. Please try again.';
@@ -121,4 +132,50 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // ===============================
+  // Logout Functionality
+  // ===============================
+  const logoutBtn = $('#logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Clear all user data
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userName');
+      
+      // Redirect to login page
+      window.location.href = 'login.html';
+    });
+  }
 });
+
+// ===============================
+// Authentication Check Function
+// (Call this at the top of protected pages)
+// ===============================
+function checkAuthentication() {
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    window.location.href = 'login.html';
+    return false;
+  }
+  return true;
+}
+
+// ===============================
+// Get Current User Info
+// ===============================
+function getCurrentUser() {
+  const userData = localStorage.getItem('currentUser');
+  return userData ? JSON.parse(userData) : null;
+}
+
+// ===============================
+// Check if User is Logged In
+// ===============================
+function isLoggedIn() {
+  return localStorage.getItem('isLoggedIn') === 'true';
+}

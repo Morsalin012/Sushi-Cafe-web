@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="Friday.css">
 
 </head>
+<script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+         window.location.href = '../Login-SignUp page/login.html';
+    }
+</script>
 <body>
     <h1>Sushi Booking Form</h1>
 

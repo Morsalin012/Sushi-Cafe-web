@@ -6,6 +6,12 @@
     <title>Friday Special Sushi</title>
     <link rel="stylesheet"href="Friday.css">
 </head>
+<script>
+    // Check if user is logged in
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+         window.location.href = '../Login-SignUp page/login.html';
+    }
+</script>
 <body>
     <h1>Friday Special Sushi Menu</h1>
 
