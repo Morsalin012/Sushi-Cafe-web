@@ -5,6 +5,20 @@ body{
   line-height:1.6;
   color:#1f2937;
   background:#fff;
+  overflow-x:hidden; /* Prevent horizontal scroll */
+}
+
+/* Make images responsive */
+img{
+  max-width:100%;
+  height:auto;
+}
+
+/* Container max-width for very large screens */
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  width:100%;
 }
 
 /* Header */
@@ -79,8 +93,10 @@ header nav a.btn{
 .menu h2{font-size:32px;margin-bottom:30px}
 .menu-items{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:20px;
+  max-width:1200px;
+  margin:0 auto;
 }
 .menu-item{
   background:#fff;
@@ -126,11 +142,93 @@ footer{
 
 /* Responsive */
 @media(max-width:768px){
+  /* Header responsive */
+  header{
+    flex-direction:column;
+    gap:10px;
+    padding:15px 20px;
+  }
+  header .logo{
+    font-size:16px;
+    text-align:center;
+  }
+  header nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+  header nav a{
+    margin:0;
+    font-size:14px;
+  }
+  
+  /* Hero responsive */
   .hero{
+    height:70vh;
+    padding:20px;
     background:
       url('https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
   }
-  .hero-text h1{font-size:32px}
-  header{flex-direction:column;gap:10px}
-  header nav a{margin:0 10px}
+  .hero-text h1{
+    font-size:28px;
+    margin-bottom:15px;
+  }
+  .hero-text p{
+    font-size:16px;
+    margin-bottom:25px;
+  }
+  
+  /* Menu responsive */
+  .menu{
+    padding:40px 20px;
+  }
+  .menu h2{
+    font-size:24px;
+    margin-bottom:25px;
+  }
+  .menu-items{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+  
+  /* About and Contact responsive */
+  .about, .contact{
+    padding:40px 20px;
+  }
+  .about h2, .contact h2{
+    font-size:22px;
+  }
+  .about p, .contact p{
+    font-size:15px;
+  }
+  
+  /* Footer responsive */
+  footer{
+    padding:15px;
+    font-size:12px;
+  }
+}
+
+/* Small mobile devices */
+@media(max-width:480px){
+  header .logo{
+    font-size:14px;
+  }
+  .hero-text h1{
+    font-size:24px;
+  }
+  .hero-text p{
+    font-size:14px;
+  }
+  .menu, .about, .contact{
+    padding:30px 15px;
+  }
+  .menu h2, .about h2, .contact h2{
+    font-size:20px;
+  }
+  .btn{
+    padding:8px 12px;
+    font-size:14px;
+  }
 }
