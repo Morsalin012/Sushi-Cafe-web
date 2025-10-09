@@ -4,12 +4,14 @@ h1{
 }
 
     body{
-        
         background-color:white;
         text-align:center;
         font-family: Arial, Helvetica, sans-serif;
         padding: 50px;
-
+        /* Mobile touch optimization */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        touch-action: manipulation;
     }
 
     .container {
@@ -35,6 +37,9 @@ h1{
         border-radius:12px;
         margin-bottom:10px;
         object-fit: cover;
+        /* Mobile optimization */
+        will-change: transform;
+        transform: translateZ(0); /* Hardware acceleration */
     }
 
     .card h2{
@@ -78,7 +83,10 @@ h1{
       border-radius: 16px;
       box-sizing: border-box;
       border: #080808;
-
+      /* Mobile touch optimization */
+      min-height: 44px; /* Minimum touch target size */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     form button{
@@ -88,12 +96,20 @@ h1{
       cursor:pointer;
       margin-top: 50px;
       text-align: center;
-      
-
+      /* Mobile touch optimization */
+      will-change: transform, background;
+      transform: translateZ(0); /* Hardware acceleration */
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
     form button:hover{
       background: darkorange;
+      transform: translateY(-1px) translateZ(0);
+    }
+
+    form button:active{
+      transform: translateY(0) translateZ(0);
+      transition-duration: 0.1s;
     }
 
     #name{
@@ -109,5 +125,62 @@ h1{
       margin-bottom: 30px;
     }
 
-    
+    /* Mobile responsive design */
+    @media (max-width: 768px) {
+        body {
+            padding: 20px 10px;
+        }
+        
+        .container {
+            gap: 15px;
+        }
+        
+        .card {
+            width: min(90vw, 280px);
+            padding: 15px;
+        }
+        
+        .card img {
+            height: 180px;
+        }
+        
+        form {
+            width: min(90vw, 280px);
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+    }
 
+    @media (max-width: 480px) {
+        body {
+            padding: 15px 8px;
+        }
+        
+        .card {
+            width: min(95vw, 260px);
+            padding: 12px;
+        }
+        
+        .card img {
+            height: 160px;
+        }
+        
+        form {
+            width: min(95vw, 260px);
+            padding: 15px;
+        }
+        
+        form input, form button, form select {
+            padding: 15px;
+            height: auto;
+            min-height: 44px;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+        }
+    }

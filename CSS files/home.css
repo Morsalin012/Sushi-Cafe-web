@@ -6,6 +6,12 @@ body{
   color:#1f2937;
   background:#fff;
   overflow-x:hidden; /* Prevent horizontal scroll */
+  /* Mobile touch optimization */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 /* Make images responsive */
@@ -86,6 +92,24 @@ header nav a.btn{
   padding:10px 18px;
   border-radius:6px;
   font-weight:600;
+  /* Better mobile touch */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  /* Smooth transitions */
+  transition: all 0.2s ease;
+}
+
+.btn:hover, .btn:active {
+  background:#ea6b0a;
+  transform: translateY(-1px);
+}
+
+/* Improve all clickable elements for mobile */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
 /* Menu */
@@ -163,12 +187,17 @@ footer{
     font-size:14px;
   }
   
-  /* Hero responsive */
+  /* Hero responsive - OPTIMIZED FOR MOBILE */
   .hero{
     height:70vh;
     padding:20px;
+    /* Lighter mobile background - single image, smaller size, lower quality */
     background:
-      url('https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=40') center/cover no-repeat;
+    /* Force hardware acceleration for smoother scrolling */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
   .hero-text h1{
     font-size:28px;
@@ -210,22 +239,28 @@ footer{
   }
 }
 
-/* Small mobile devices */
+/* Small mobile devices - ULTRA FAST */
 @media(max-width:480px){
+  /* Disable background image for ultra-fast loading on slow phones */
+  .hero{
+    background: linear-gradient(135deg, #111827 0%, #374151 100%) !important;
+    height: 60vh;
+  }
+  
   header .logo{
     font-size:14px;
   }
   .hero-text h1{
-    font-size:24px;
+    font-size:22px;
   }
   .hero-text p{
     font-size:14px;
   }
   .menu, .about, .contact{
-    padding:30px 15px;
+    padding:25px 15px;
   }
   .menu h2, .about h2, .contact h2{
-    font-size:20px;
+    font-size:18px;
   }
   .btn{
     padding:8px 12px;
