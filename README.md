@@ -29,6 +29,9 @@ A **frontend web project** built with **HTML, CSS, and JavaScript**, showcasing 
 
 ---
 
+## 🌐 Live Demo
+[View Live Website](https://morsalin012.github.io/sushi-cafe-web/)
+
 
 💌 Feel free to connect and share feedback!  
 
